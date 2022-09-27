@@ -1,0 +1,1465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CableSystemManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CableSystemManagement.dbo.AddressInformation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AddressInformation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="CityName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AgentInformation">
+          <Key>
+            <PropertyRef Name="AgentId" />
+          </Key>
+          <Property Name="AgentId" Type="int" Nullable="false" />
+          <Property Name="AgentFirstName" Type="varchar" MaxLength="20" />
+          <Property Name="AgentLastName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'CableSystemManagement.dbo.Channel' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Channel">
+          <Property Name="ChannelNumber" Type="int" />
+          <Property Name="ChannelId" Type="int" />
+        </EntityType>-->
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ComplaintResolution">
+          <Key>
+            <PropertyRef Name="ResolutionId" />
+          </Key>
+          <Property Name="ResolutionId" Type="int" Nullable="false" />
+          <Property Name="ResolutionDescription" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ResolutionAmount" Type="int" Nullable="false" />
+          <Property Name="ComplaintType" Type="int" />
+          <Property Name="AgentId" Type="int" />
+          <Property Name="Monthformation" Type="int" />
+        </EntityType>
+        <EntityType Name="ComplaintStatus">
+          <Key>
+            <PropertyRef Name="ComplintStatusId" />
+          </Key>
+          <Property Name="ComplintStatusId" Type="int" Nullable="false" />
+          <Property Name="ComplaintStetus" Type="varchar" MaxLength="20" />
+          <Property Name="ComplaintStatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="ComplaintType">
+          <Key>
+            <PropertyRef Name="ComplaintTypeId" />
+          </Key>
+          <Property Name="ComplaintTypeId" Type="int" Nullable="false" />
+          <Property Name="ComplaintType" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ComplaintCost" Type="int" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="CustomerFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerLastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerCity" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CustomerQuery" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PaymentDate" Type="date" Nullable="false" />
+          <Property Name="PackageId" Type="int" Nullable="false" />
+          <Property Name="CustomerStetus" Type="int" Nullable="false" />
+          <Property Name="CustomerContact" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="CustomerComplaint">
+          <Key>
+            <PropertyRef Name="ComplaintId" />
+          </Key>
+          <Property Name="ComplaintId" Type="int" Nullable="false" />
+          <Property Name="ComplaintDescription" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ComplaintDate" Type="date" Nullable="false" />
+          <Property Name="ComplaintResolvedDate" Type="date" Nullable="false" />
+          <Property Name="ComplaintType" Type="int" />
+          <Property Name="ComplintStatus" Type="int" />
+          <Property Name="ResolvedBy" Type="int" />
+          <Property Name="ResolveInformation" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+        </EntityType>
+        <EntityType Name="CustomerPaymentHistory">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" Nullable="false" />
+          <Property Name="PersonID" Type="int" />
+          <Property Name="PaymentStatusId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="AccountStatusId" Type="int" />
+          <Property Name="PaymentDuedate" Type="date" />
+        </EntityType>
+        <EntityType Name="CustomerRole">
+          <Key>
+            <PropertyRef Name="CustomerRoleId" />
+          </Key>
+          <Property Name="CustomerRoleId" Type="int" Nullable="false" />
+          <Property Name="CustomerRoleName" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerStatusInfo">
+          <Key>
+            <PropertyRef Name="CustomerStatusId" />
+          </Key>
+          <Property Name="CustomerStatusId" Type="int" Nullable="false" />
+          <Property Name="ActiveDate" Type="date" />
+          <Property Name="DeactiveDate" Type="date" />
+          <Property Name="CustomerId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'CableSystemManagement.dbo.DEMO' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="DEMO">
+          <Property Name="ID" Type="int" />
+          <Property Name="NAME" Type="varchar" MaxLength="20" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="AGE" Type="int" StoreGeneratedPattern="Computed" />
+        </EntityType>-->
+        <EntityType Name="month">
+          <Key>
+            <PropertyRef Name="monthId" />
+          </Key>
+          <Property Name="monthId" Type="int" Nullable="false" />
+          <Property Name="monthDate" Type="date" />
+          <Property Name="monthName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CableSystemManagement.dbo.NewPackagePrice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="NewPackagePrice">
+          <Key>
+            <PropertyRef Name="PackageId" />
+            <PropertyRef Name="NewPackagePrice" />
+          </Key>
+          <Property Name="PackageId" Type="int" Nullable="false" />
+          <Property Name="NewPackagePrice" Type="int" Nullable="false" />
+          <Property Name="MonthId" Type="int" />
+          <Property Name="OLDPACKAGEID" Type="int" />
+          <Property Name="YEAR" Type="int" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PackageId" />
+          </Key>
+          <Property Name="PackageId" Type="int" Nullable="false" />
+          <Property Name="PackageName" Type="varchar" MaxLength="20" />
+          <Property Name="PackagePrice" Type="int" />
+          <Property Name="ChannelId" Type="int" />
+        </EntityType>
+        <EntityType Name="Package_Log_Table">
+          <Key>
+            <PropertyRef Name="PackageId" />
+          </Key>
+          <Property Name="PackageId" Type="int" Nullable="false" />
+          <Property Name="PackageName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PackagePrice" Type="int" />
+          <Property Name="ChannelId" Type="int" />
+        </EntityType>
+        <EntityType Name="paymentStetus">
+          <Key>
+            <PropertyRef Name="PaymentStatusId" />
+          </Key>
+          <Property Name="PaymentStatusId" Type="int" Nullable="false" />
+          <Property Name="PaymentStetus" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonGender">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="int" Nullable="false" />
+          <Property Name="GenderInfo" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonInformation">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="int" Nullable="false" />
+          <Property Name="PersonName" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="QueryStatus">
+          <Key>
+            <PropertyRef Name="QueryStatusId" />
+          </Key>
+          <Property Name="QueryStatusId" Type="int" Nullable="false" />
+          <Property Name="QuerySatus" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="StatusDetails" Type="varchar" MaxLength="20" />
+          <Property Name="StatusBit" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'CableSystemManagement.dbo.User' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="User">
+          <Property Name="UserId" Type="int" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" />
+        </EntityType>-->
+        <Association Name="FK__Complaint__AGENT__70DDC3D8">
+          <End Role="AgentInformation" Type="Self.AgentInformation" Multiplicity="0..1" />
+          <End Role="ComplaintResolution" Type="Self.ComplaintResolution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentInformation">
+              <PropertyRef Name="AgentId" />
+            </Principal>
+            <Dependent Role="ComplaintResolution">
+              <PropertyRef Name="AgentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Complaint__Compl__5FB337D6">
+          <End Role="ComplaintType" Type="Self.ComplaintType" Multiplicity="0..1" />
+          <End Role="ComplaintResolution" Type="Self.ComplaintResolution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComplaintType">
+              <PropertyRef Name="ComplaintTypeId" />
+            </Principal>
+            <Dependent Role="ComplaintResolution">
+              <PropertyRef Name="ComplaintType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Complaint__Month__73BA3083">
+          <End Role="month" Type="Self.month" Multiplicity="0..1" />
+          <End Role="ComplaintResolution" Type="Self.ComplaintResolution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="month">
+              <PropertyRef Name="monthId" />
+            </Principal>
+            <Dependent Role="ComplaintResolution">
+              <PropertyRef Name="Monthformation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__Compl__628FA481">
+          <End Role="ComplaintResolution" Type="Self.ComplaintResolution" Multiplicity="0..1" />
+          <End Role="CustomerComplaint" Type="Self.CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComplaintResolution">
+              <PropertyRef Name="ResolutionId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="ComplaintType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__Compl__6E01572D">
+          <End Role="ComplaintStatus" Type="Self.ComplaintStatus" Multiplicity="0..1" />
+          <End Role="CustomerComplaint" Type="Self.CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComplaintStatus">
+              <PropertyRef Name="ComplintStatusId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="ComplintStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__Custo__3864608B">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="CustomerComplaint" Type="Self.CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__Resol__71D1E811">
+          <End Role="AgentInformation" Type="Self.AgentInformation" Multiplicity="0..1" />
+          <End Role="CustomerComplaint" Type="Self.CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentInformation">
+              <PropertyRef Name="AgentId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="ResolvedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__Resol__72C60C4A">
+          <End Role="ComplaintResolution" Type="Self.ComplaintResolution" Multiplicity="0..1" />
+          <End Role="CustomerComplaint" Type="Self.CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComplaintResolution">
+              <PropertyRef Name="ResolutionId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="ResolveInformation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerP__Accou__3C34F16F">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="CustomerPaymentHistory" Type="Self.CustomerPaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="CustomerPaymentHistory">
+              <PropertyRef Name="AccountStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerP__Custo__2A164134">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="CustomerPaymentHistory" Type="Self.CustomerPaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerPaymentHistory">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerP__Payme__29221CFB">
+          <End Role="paymentStetus" Type="Self.paymentStetus" Multiplicity="0..1" />
+          <End Role="CustomerPaymentHistory" Type="Self.CustomerPaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paymentStetus">
+              <PropertyRef Name="PaymentStatusId" />
+            </Principal>
+            <Dependent Role="CustomerPaymentHistory">
+              <PropertyRef Name="PaymentStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerP__Perso__282DF8C2">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="CustomerPaymentHistory" Type="Self.CustomerPaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerPaymentHistory">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerS__Custo__3F115E1A">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="CustomerStatusInfo" Type="Self.CustomerStatusInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerStatusInfo">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NewPackag__Month__787EE5A0">
+          <End Role="month" Type="Self.month" Multiplicity="0..1" />
+          <End Role="NewPackagePrice" Type="Self.NewPackagePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="month">
+              <PropertyRef Name="monthId" />
+            </Principal>
+            <Dependent Role="NewPackagePrice">
+              <PropertyRef Name="MonthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NewPackag__OLDPA__797309D9">
+          <End Role="Package" Type="Self.Package" Multiplicity="0..1" />
+          <End Role="NewPackagePrice" Type="Self.NewPackagePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="PackageId" />
+            </Principal>
+            <Dependent Role="NewPackagePrice">
+              <PropertyRef Name="OLDPACKAGEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="GetHowMany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="InputString" Type="nvarchar" Mode="In" />
+          <Parameter Name="SubString" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetNewPackageCost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetNewPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="year" Type="int" Mode="In" />
+          <Parameter Name="month" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetPackageCost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="year" Type="int" Mode="In" />
+          <Parameter Name="month" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MaskString" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="input" Type="nvarchar" Mode="In" />
+          <Parameter Name="mask" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="StoredProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CustomerName" Type="nvarchar" Mode="In" />
+          <Parameter Name="CustomerCity" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usf_AgentHaveComplaintOrNot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="AgentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usf_CheckActiveComplaint" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="AgentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usf_GetMaxDelay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="CustomerId" Type="int" Mode="In" />
+          <Parameter Name="PaymentDuedate" Type="date" Mode="In" />
+          <Parameter Name="PaymentDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="usf_TotalComplaintCountOfCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="CustomerId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_CityInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="City" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetCustomerDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="from" Type="date" Mode="In" />
+          <Parameter Name="to" Type="date" Mode="In" />
+        </Function>
+        <Function Name="usp_GetMaxDelay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="CustomerId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_transaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CustomerFirstName" Type="varchar" Mode="In" />
+          <Parameter Name="CustomerLastName" Type="varchar" Mode="In" />
+          <Parameter Name="CustomerQuery" Type="varchar" Mode="In" />
+          <Parameter Name="PaymentDate" Type="date" Mode="In" />
+          <Parameter Name="PackageName" Type="varchar" Mode="In" />
+          <Parameter Name="ComplaintStatus" Type="varchar" Mode="In" />
+          <Parameter Name="CustomerRoleName" Type="varchar" Mode="In" />
+          <Parameter Name="CustomerStetus" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="CableSystemManagementModelStoreContainer">
+          <EntitySet Name="AgentInformation" EntityType="Self.AgentInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComplaintResolution" EntityType="Self.ComplaintResolution" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComplaintStatus" EntityType="Self.ComplaintStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComplaintType" EntityType="Self.ComplaintType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerComplaint" EntityType="Self.CustomerComplaint" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerPaymentHistory" EntityType="Self.CustomerPaymentHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerRole" EntityType="Self.CustomerRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerStatusInfo" EntityType="Self.CustomerStatusInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="month" EntityType="Self.month" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Package" EntityType="Self.Package" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Package_Log_Table" EntityType="Self.Package_Log_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="paymentStetus" EntityType="Self.paymentStetus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonGender" EntityType="Self.PersonGender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonInformation" EntityType="Self.PersonInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QueryStatus" EntityType="Self.QueryStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddressInformation" EntityType="Self.AddressInformation" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AddressInformation].[Id] AS [Id], 
+    [AddressInformation].[Name] AS [Name], 
+    [AddressInformation].[CityName] AS [CityName]
+    FROM [dbo].[AddressInformation] AS [AddressInformation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="NewPackagePrice" EntityType="Self.NewPackagePrice" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [NewPackagePrice].[PackageId] AS [PackageId], 
+    [NewPackagePrice].[NewPackagePrice] AS [NewPackagePrice], 
+    [NewPackagePrice].[MonthId] AS [MonthId], 
+    [NewPackagePrice].[OLDPACKAGEID] AS [OLDPACKAGEID], 
+    [NewPackagePrice].[YEAR] AS [YEAR]
+    FROM [dbo].[NewPackagePrice] AS [NewPackagePrice]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Complaint__AGENT__70DDC3D8" Association="Self.FK__Complaint__AGENT__70DDC3D8">
+            <End Role="AgentInformation" EntitySet="AgentInformation" />
+            <End Role="ComplaintResolution" EntitySet="ComplaintResolution" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Complaint__Compl__5FB337D6" Association="Self.FK__Complaint__Compl__5FB337D6">
+            <End Role="ComplaintType" EntitySet="ComplaintType" />
+            <End Role="ComplaintResolution" EntitySet="ComplaintResolution" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Complaint__Month__73BA3083" Association="Self.FK__Complaint__Month__73BA3083">
+            <End Role="month" EntitySet="month" />
+            <End Role="ComplaintResolution" EntitySet="ComplaintResolution" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__Compl__628FA481" Association="Self.FK__CustomerC__Compl__628FA481">
+            <End Role="ComplaintResolution" EntitySet="ComplaintResolution" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaint" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__Compl__6E01572D" Association="Self.FK__CustomerC__Compl__6E01572D">
+            <End Role="ComplaintStatus" EntitySet="ComplaintStatus" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaint" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__Custo__3864608B" Association="Self.FK__CustomerC__Custo__3864608B">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaint" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__Resol__71D1E811" Association="Self.FK__CustomerC__Resol__71D1E811">
+            <End Role="AgentInformation" EntitySet="AgentInformation" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaint" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__Resol__72C60C4A" Association="Self.FK__CustomerC__Resol__72C60C4A">
+            <End Role="ComplaintResolution" EntitySet="ComplaintResolution" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaint" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerP__Accou__3C34F16F" Association="Self.FK__CustomerP__Accou__3C34F16F">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="CustomerPaymentHistory" EntitySet="CustomerPaymentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerP__Custo__2A164134" Association="Self.FK__CustomerP__Custo__2A164134">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerPaymentHistory" EntitySet="CustomerPaymentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerP__Payme__29221CFB" Association="Self.FK__CustomerP__Payme__29221CFB">
+            <End Role="paymentStetus" EntitySet="paymentStetus" />
+            <End Role="CustomerPaymentHistory" EntitySet="CustomerPaymentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerP__Perso__282DF8C2" Association="Self.FK__CustomerP__Perso__282DF8C2">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerPaymentHistory" EntitySet="CustomerPaymentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerS__Custo__3F115E1A" Association="Self.FK__CustomerS__Custo__3F115E1A">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerStatusInfo" EntitySet="CustomerStatusInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NewPackag__Month__787EE5A0" Association="Self.FK__NewPackag__Month__787EE5A0">
+            <End Role="month" EntitySet="month" />
+            <End Role="NewPackagePrice" EntitySet="NewPackagePrice" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NewPackag__OLDPA__797309D9" Association="Self.FK__NewPackag__OLDPA__797309D9">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="NewPackagePrice" EntitySet="NewPackagePrice" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CableSystemManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AgentInformation">
+          <Key>
+            <PropertyRef Name="AgentId" />
+          </Key>
+          <Property Name="AgentId" Type="Int32" Nullable="false" />
+          <Property Name="AgentFirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AgentLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ComplaintResolutions" Relationship="Self.FK__Complaint__AGENT__70DDC3D8" FromRole="AgentInformation" ToRole="ComplaintResolution" />
+          <NavigationProperty Name="CustomerComplaints" Relationship="Self.FK__CustomerC__Resol__71D1E811" FromRole="AgentInformation" ToRole="CustomerComplaint" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ComplaintResolution">
+          <Key>
+            <PropertyRef Name="ResolutionId" />
+          </Key>
+          <Property Name="ResolutionId" Type="Int32" Nullable="false" />
+          <Property Name="ResolutionDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ResolutionAmount" Type="Int32" Nullable="false" />
+          <Property Name="ComplaintType" Type="Int32" />
+          <Property Name="AgentId" Type="Int32" />
+          <Property Name="Monthformation" Type="Int32" />
+          <NavigationProperty Name="AgentInformation" Relationship="Self.FK__Complaint__AGENT__70DDC3D8" FromRole="ComplaintResolution" ToRole="AgentInformation" />
+          <NavigationProperty Name="ComplaintType1" Relationship="Self.FK__Complaint__Compl__5FB337D6" FromRole="ComplaintResolution" ToRole="ComplaintType" />
+          <NavigationProperty Name="month" Relationship="Self.FK__Complaint__Month__73BA3083" FromRole="ComplaintResolution" ToRole="month" />
+          <NavigationProperty Name="CustomerComplaints" Relationship="Self.FK__CustomerC__Compl__628FA481" FromRole="ComplaintResolution" ToRole="CustomerComplaint" />
+          <NavigationProperty Name="CustomerComplaints1" Relationship="Self.FK__CustomerC__Resol__72C60C4A" FromRole="ComplaintResolution" ToRole="CustomerComplaint" />
+        </EntityType>
+        <EntityType Name="ComplaintStatu">
+          <Key>
+            <PropertyRef Name="ComplintStatusId" />
+          </Key>
+          <Property Name="ComplintStatusId" Type="Int32" Nullable="false" />
+          <Property Name="ComplaintStetus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ComplaintStatus" Type="Boolean" />
+          <NavigationProperty Name="CustomerComplaints" Relationship="Self.FK__CustomerC__Compl__6E01572D" FromRole="ComplaintStatus" ToRole="CustomerComplaint" />
+        </EntityType>
+        <EntityType Name="ComplaintType">
+          <Key>
+            <PropertyRef Name="ComplaintTypeId" />
+          </Key>
+          <Property Name="ComplaintTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ComplaintType1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ComplaintCost" Type="Int32" />
+          <NavigationProperty Name="ComplaintResolutions" Relationship="Self.FK__Complaint__Compl__5FB337D6" FromRole="ComplaintType" ToRole="ComplaintResolution" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerCity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerQuery" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PackageId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerStetus" Type="Int32" Nullable="false" />
+          <Property Name="CustomerContact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CustomerComplaints" Relationship="Self.FK__CustomerC__Custo__3864608B" FromRole="Customer" ToRole="CustomerComplaint" />
+          <NavigationProperty Name="CustomerPaymentHistories" Relationship="Self.FK__CustomerP__Custo__2A164134" FromRole="Customer" ToRole="CustomerPaymentHistory" />
+          <NavigationProperty Name="CustomerPaymentHistories1" Relationship="Self.FK__CustomerP__Perso__282DF8C2" FromRole="Customer" ToRole="CustomerPaymentHistory" />
+          <NavigationProperty Name="CustomerStatusInfoes" Relationship="Self.FK__CustomerS__Custo__3F115E1A" FromRole="Customer" ToRole="CustomerStatusInfo" />
+        </EntityType>
+        <EntityType Name="CustomerComplaint">
+          <Key>
+            <PropertyRef Name="ComplaintId" />
+          </Key>
+          <Property Name="ComplaintId" Type="Int32" Nullable="false" />
+          <Property Name="ComplaintDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ComplaintDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ComplaintResolvedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ComplaintType" Type="Int32" />
+          <Property Name="ComplintStatus" Type="Int32" />
+          <Property Name="ResolvedBy" Type="Int32" />
+          <Property Name="ResolveInformation" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <NavigationProperty Name="AgentInformation" Relationship="Self.FK__CustomerC__Resol__71D1E811" FromRole="CustomerComplaint" ToRole="AgentInformation" />
+          <NavigationProperty Name="ComplaintResolution" Relationship="Self.FK__CustomerC__Compl__628FA481" FromRole="CustomerComplaint" ToRole="ComplaintResolution" />
+          <NavigationProperty Name="ComplaintResolution1" Relationship="Self.FK__CustomerC__Resol__72C60C4A" FromRole="CustomerComplaint" ToRole="ComplaintResolution" />
+          <NavigationProperty Name="ComplaintStatu" Relationship="Self.FK__CustomerC__Compl__6E01572D" FromRole="CustomerComplaint" ToRole="ComplaintStatus" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__CustomerC__Custo__3864608B" FromRole="CustomerComplaint" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="CustomerPaymentHistory">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" />
+          <Property Name="PersonID" Type="Int32" />
+          <Property Name="PaymentStatusId" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="AccountStatusId" Type="Int32" />
+          <Property Name="PaymentDuedate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__CustomerP__Custo__2A164134" FromRole="CustomerPaymentHistory" ToRole="Customer" />
+          <NavigationProperty Name="Customer1" Relationship="Self.FK__CustomerP__Perso__282DF8C2" FromRole="CustomerPaymentHistory" ToRole="Customer" />
+          <NavigationProperty Name="Status" Relationship="Self.FK__CustomerP__Accou__3C34F16F" FromRole="CustomerPaymentHistory" ToRole="Status" />
+          <NavigationProperty Name="paymentStetu" Relationship="Self.FK__CustomerP__Payme__29221CFB" FromRole="CustomerPaymentHistory" ToRole="paymentStetus" />
+        </EntityType>
+        <EntityType Name="CustomerRole">
+          <Key>
+            <PropertyRef Name="CustomerRoleId" />
+          </Key>
+          <Property Name="CustomerRoleId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerRoleName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerStatusInfo">
+          <Key>
+            <PropertyRef Name="CustomerStatusId" />
+          </Key>
+          <Property Name="CustomerStatusId" Type="Int32" Nullable="false" />
+          <Property Name="ActiveDate" Type="DateTime" Precision="0" />
+          <Property Name="DeactiveDate" Type="DateTime" Precision="0" />
+          <Property Name="CustomerId" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__CustomerS__Custo__3F115E1A" FromRole="CustomerStatusInfo" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="month">
+          <Key>
+            <PropertyRef Name="monthId" />
+          </Key>
+          <Property Name="monthId" Type="Int32" Nullable="false" />
+          <Property Name="monthDate" Type="DateTime" Precision="0" />
+          <Property Name="monthName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ComplaintResolutions" Relationship="Self.FK__Complaint__Month__73BA3083" FromRole="month" ToRole="ComplaintResolution" />
+          <NavigationProperty Name="NewPackagePrices" Relationship="Self.FK__NewPackag__Month__787EE5A0" FromRole="month" ToRole="NewPackagePrice" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PackageId" />
+          </Key>
+          <Property Name="PackageId" Type="Int32" Nullable="false" />
+          <Property Name="PackageName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PackagePrice" Type="Int32" />
+          <Property Name="ChannelId" Type="Int32" />
+          <NavigationProperty Name="NewPackagePrices" Relationship="Self.FK__NewPackag__OLDPA__797309D9" FromRole="Package" ToRole="NewPackagePrice" />
+        </EntityType>
+        <EntityType Name="Package_Log_Table">
+          <Key>
+            <PropertyRef Name="PackageId" />
+          </Key>
+          <Property Name="PackageId" Type="Int32" Nullable="false" />
+          <Property Name="PackageName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PackagePrice" Type="Int32" />
+          <Property Name="ChannelId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="paymentStetu">
+          <Key>
+            <PropertyRef Name="PaymentStatusId" />
+          </Key>
+          <Property Name="PaymentStatusId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentStetus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CustomerPaymentHistories" Relationship="Self.FK__CustomerP__Payme__29221CFB" FromRole="paymentStetus" ToRole="CustomerPaymentHistory" />
+        </EntityType>
+        <EntityType Name="PersonGender">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="Int32" Nullable="false" />
+          <Property Name="GenderInfo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonInformation">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <Property Name="PersonName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="QueryStatu">
+          <Key>
+            <PropertyRef Name="QueryStatusId" />
+          </Key>
+          <Property Name="QueryStatusId" Type="Int32" Nullable="false" />
+          <Property Name="QuerySatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="StatusDetails" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StatusBit" Type="Boolean" />
+          <NavigationProperty Name="CustomerPaymentHistories" Relationship="Self.FK__CustomerP__Accou__3C34F16F" FromRole="Status" ToRole="CustomerPaymentHistory" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="AddressInformation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="NewPackagePrice">
+          <Key>
+            <PropertyRef Name="PackageId" />
+            <PropertyRef Name="NewPackagePrice1" />
+          </Key>
+          <Property Name="PackageId" Type="Int32" Nullable="false" />
+          <Property Name="NewPackagePrice1" Type="Int32" Nullable="false" />
+          <Property Name="MonthId" Type="Int32" />
+          <Property Name="OLDPACKAGEID" Type="Int32" />
+          <Property Name="YEAR" Type="Int32" />
+          <NavigationProperty Name="month" Relationship="Self.FK__NewPackag__Month__787EE5A0" FromRole="NewPackagePrice" ToRole="month" />
+          <NavigationProperty Name="Package" Relationship="Self.FK__NewPackag__OLDPA__797309D9" FromRole="NewPackagePrice" ToRole="Package" />
+        </EntityType>
+        <Association Name="FK__Complaint__AGENT__70DDC3D8">
+          <End Role="AgentInformation" Type="Self.AgentInformation" Multiplicity="0..1" />
+          <End Role="ComplaintResolution" Type="Self.ComplaintResolution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentInformation">
+              <PropertyRef Name="AgentId" />
+            </Principal>
+            <Dependent Role="ComplaintResolution">
+              <PropertyRef Name="AgentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__Resol__71D1E811">
+          <End Role="AgentInformation" Type="Self.AgentInformation" Multiplicity="0..1" />
+          <End Role="CustomerComplaint" Type="Self.CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentInformation">
+              <PropertyRef Name="AgentId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="ResolvedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Complaint__Compl__5FB337D6">
+          <End Role="ComplaintType" Type="Self.ComplaintType" Multiplicity="0..1" />
+          <End Role="ComplaintResolution" Type="Self.ComplaintResolution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComplaintType">
+              <PropertyRef Name="ComplaintTypeId" />
+            </Principal>
+            <Dependent Role="ComplaintResolution">
+              <PropertyRef Name="ComplaintType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Complaint__Month__73BA3083">
+          <End Role="month" Type="Self.month" Multiplicity="0..1" />
+          <End Role="ComplaintResolution" Type="Self.ComplaintResolution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="month">
+              <PropertyRef Name="monthId" />
+            </Principal>
+            <Dependent Role="ComplaintResolution">
+              <PropertyRef Name="Monthformation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__Compl__628FA481">
+          <End Role="ComplaintResolution" Type="Self.ComplaintResolution" Multiplicity="0..1" />
+          <End Role="CustomerComplaint" Type="Self.CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComplaintResolution">
+              <PropertyRef Name="ResolutionId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="ComplaintType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__Resol__72C60C4A">
+          <End Role="ComplaintResolution" Type="Self.ComplaintResolution" Multiplicity="0..1" />
+          <End Role="CustomerComplaint" Type="Self.CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComplaintResolution">
+              <PropertyRef Name="ResolutionId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="ResolveInformation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__Compl__6E01572D">
+          <End Role="ComplaintStatus" Type="Self.ComplaintStatu" Multiplicity="0..1" />
+          <End Role="CustomerComplaint" Type="Self.CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComplaintStatus">
+              <PropertyRef Name="ComplintStatusId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="ComplintStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerC__Custo__3864608B">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="CustomerComplaint" Type="Self.CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerP__Custo__2A164134">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="CustomerPaymentHistory" Type="Self.CustomerPaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerPaymentHistory">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerP__Perso__282DF8C2">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="CustomerPaymentHistory" Type="Self.CustomerPaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerPaymentHistory">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerS__Custo__3F115E1A">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="CustomerStatusInfo" Type="Self.CustomerStatusInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerStatusInfo">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerP__Accou__3C34F16F">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="CustomerPaymentHistory" Type="Self.CustomerPaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="CustomerPaymentHistory">
+              <PropertyRef Name="AccountStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerP__Payme__29221CFB">
+          <End Role="paymentStetus" Type="Self.paymentStetu" Multiplicity="0..1" />
+          <End Role="CustomerPaymentHistory" Type="Self.CustomerPaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paymentStetus">
+              <PropertyRef Name="PaymentStatusId" />
+            </Principal>
+            <Dependent Role="CustomerPaymentHistory">
+              <PropertyRef Name="PaymentStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NewPackag__Month__787EE5A0">
+          <End Role="month" Type="Self.month" Multiplicity="0..1" />
+          <End Role="NewPackagePrice" Type="Self.NewPackagePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="month">
+              <PropertyRef Name="monthId" />
+            </Principal>
+            <Dependent Role="NewPackagePrice">
+              <PropertyRef Name="MonthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NewPackag__OLDPA__797309D9">
+          <End Role="Package" Type="Self.Package" Multiplicity="0..1" />
+          <End Role="NewPackagePrice" Type="Self.NewPackagePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="PackageId" />
+            </Principal>
+            <Dependent Role="NewPackagePrice">
+              <PropertyRef Name="OLDPACKAGEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CableSystemManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AgentInformations" EntityType="Self.AgentInformation" />
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="ComplaintResolutions" EntityType="Self.ComplaintResolution" />
+          <EntitySet Name="ComplaintStatus" EntityType="Self.ComplaintStatu" />
+          <EntitySet Name="ComplaintTypes" EntityType="Self.ComplaintType" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="CustomerComplaints" EntityType="Self.CustomerComplaint" />
+          <EntitySet Name="CustomerPaymentHistories" EntityType="Self.CustomerPaymentHistory" />
+          <EntitySet Name="CustomerRoles" EntityType="Self.CustomerRole" />
+          <EntitySet Name="CustomerStatusInfoes" EntityType="Self.CustomerStatusInfo" />
+          <EntitySet Name="months" EntityType="Self.month" />
+          <EntitySet Name="Packages" EntityType="Self.Package" />
+          <EntitySet Name="Package_Log_Table" EntityType="Self.Package_Log_Table" />
+          <EntitySet Name="paymentStetus" EntityType="Self.paymentStetu" />
+          <EntitySet Name="PersonGenders" EntityType="Self.PersonGender" />
+          <EntitySet Name="PersonInformations" EntityType="Self.PersonInformation" />
+          <EntitySet Name="QueryStatus" EntityType="Self.QueryStatu" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="AddressInformations" EntityType="Self.AddressInformation" />
+          <EntitySet Name="NewPackagePrices" EntityType="Self.NewPackagePrice" />
+          <AssociationSet Name="FK__Complaint__AGENT__70DDC3D8" Association="Self.FK__Complaint__AGENT__70DDC3D8">
+            <End Role="AgentInformation" EntitySet="AgentInformations" />
+            <End Role="ComplaintResolution" EntitySet="ComplaintResolutions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__Resol__71D1E811" Association="Self.FK__CustomerC__Resol__71D1E811">
+            <End Role="AgentInformation" EntitySet="AgentInformations" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Complaint__Compl__5FB337D6" Association="Self.FK__Complaint__Compl__5FB337D6">
+            <End Role="ComplaintType" EntitySet="ComplaintTypes" />
+            <End Role="ComplaintResolution" EntitySet="ComplaintResolutions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Complaint__Month__73BA3083" Association="Self.FK__Complaint__Month__73BA3083">
+            <End Role="month" EntitySet="months" />
+            <End Role="ComplaintResolution" EntitySet="ComplaintResolutions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__Compl__628FA481" Association="Self.FK__CustomerC__Compl__628FA481">
+            <End Role="ComplaintResolution" EntitySet="ComplaintResolutions" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__Resol__72C60C4A" Association="Self.FK__CustomerC__Resol__72C60C4A">
+            <End Role="ComplaintResolution" EntitySet="ComplaintResolutions" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__Compl__6E01572D" Association="Self.FK__CustomerC__Compl__6E01572D">
+            <End Role="ComplaintStatus" EntitySet="ComplaintStatus" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__Custo__3864608B" Association="Self.FK__CustomerC__Custo__3864608B">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerP__Custo__2A164134" Association="Self.FK__CustomerP__Custo__2A164134">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerPaymentHistory" EntitySet="CustomerPaymentHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerP__Perso__282DF8C2" Association="Self.FK__CustomerP__Perso__282DF8C2">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerPaymentHistory" EntitySet="CustomerPaymentHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerS__Custo__3F115E1A" Association="Self.FK__CustomerS__Custo__3F115E1A">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerStatusInfo" EntitySet="CustomerStatusInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerP__Accou__3C34F16F" Association="Self.FK__CustomerP__Accou__3C34F16F">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="CustomerPaymentHistory" EntitySet="CustomerPaymentHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerP__Payme__29221CFB" Association="Self.FK__CustomerP__Payme__29221CFB">
+            <End Role="paymentStetus" EntitySet="paymentStetus" />
+            <End Role="CustomerPaymentHistory" EntitySet="CustomerPaymentHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NewPackag__Month__787EE5A0" Association="Self.FK__NewPackag__Month__787EE5A0">
+            <End Role="month" EntitySet="months" />
+            <End Role="NewPackagePrice" EntitySet="NewPackagePrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NewPackag__OLDPA__797309D9" Association="Self.FK__NewPackag__OLDPA__797309D9">
+            <End Role="Package" EntitySet="Packages" />
+            <End Role="NewPackagePrice" EntitySet="NewPackagePrices" />
+          </AssociationSet>
+          <FunctionImport Name="GetNewPackageCost" ReturnType="Collection(CableSystemManagementModel.GetNewPackageCost_Result)">
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetNewPrice" ReturnType="Collection(Int32)">
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="month" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetPackageCost" ReturnType="Collection(CableSystemManagementModel.GetPackageCost_Result)">
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="month" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(CableSystemManagementModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(CableSystemManagementModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="StoredProcedure">
+            <Parameter Name="CustomerName" Mode="In" Type="String" />
+            <Parameter Name="CustomerCity" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_CityInformation" ReturnType="Collection(String)">
+            <Parameter Name="City" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetCustomerDetails" ReturnType="Collection(CableSystemManagementModel.usp_GetCustomerDetails_Result)">
+            <Parameter Name="from" Mode="In" Type="DateTime" />
+            <Parameter Name="to" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_transaction" ReturnType="Collection(Int32)">
+            <Parameter Name="CustomerFirstName" Mode="In" Type="String" />
+            <Parameter Name="CustomerLastName" Mode="In" Type="String" />
+            <Parameter Name="CustomerQuery" Mode="In" Type="String" />
+            <Parameter Name="PaymentDate" Mode="In" Type="DateTime" />
+            <Parameter Name="PackageName" Mode="In" Type="String" />
+            <Parameter Name="ComplaintStatus" Mode="In" Type="String" />
+            <Parameter Name="CustomerRoleName" Mode="In" Type="String" />
+            <Parameter Name="CustomerStetus" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetNewPackageCost_Result">
+          <Property Type="Int32" Name="PackageId" Nullable="false" />
+          <Property Type="Int32" Name="NewPackagePrice" Nullable="false" />
+          <Property Type="Int32" Name="MonthId" Nullable="true" />
+          <Property Type="Int32" Name="OLDPACKAGEID" Nullable="true" />
+          <Property Type="Int32" Name="YEAR" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetPackageCost_Result">
+          <Property Type="Int32" Name="PackageId" Nullable="false" />
+          <Property Type="Int32" Name="NewPackagePrice" Nullable="false" />
+          <Property Type="Int32" Name="MonthId" Nullable="true" />
+          <Property Type="Int32" Name="OLDPACKAGEID" Nullable="true" />
+          <Property Type="Int32" Name="YEAR" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetCustomerDetails_Result">
+          <Property Type="String" Name="CustomerFirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CustomerLastName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CableSystemManagementModelStoreContainer" CdmEntityContainer="CableSystemManagementEntities">
+          <EntitySetMapping Name="AgentInformations">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.AgentInformation">
+              <MappingFragment StoreEntitySet="AgentInformation">
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="AgentFirstName" ColumnName="AgentFirstName" />
+                <ScalarProperty Name="AgentLastName" ColumnName="AgentLastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComplaintResolutions">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.ComplaintResolution">
+              <MappingFragment StoreEntitySet="ComplaintResolution">
+                <ScalarProperty Name="ResolutionId" ColumnName="ResolutionId" />
+                <ScalarProperty Name="ResolutionDescription" ColumnName="ResolutionDescription" />
+                <ScalarProperty Name="ResolutionAmount" ColumnName="ResolutionAmount" />
+                <ScalarProperty Name="ComplaintType" ColumnName="ComplaintType" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="Monthformation" ColumnName="Monthformation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComplaintStatus">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.ComplaintStatu">
+              <MappingFragment StoreEntitySet="ComplaintStatus">
+                <ScalarProperty Name="ComplintStatusId" ColumnName="ComplintStatusId" />
+                <ScalarProperty Name="ComplaintStetus" ColumnName="ComplaintStetus" />
+                <ScalarProperty Name="ComplaintStatus" ColumnName="ComplaintStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComplaintTypes">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.ComplaintType">
+              <MappingFragment StoreEntitySet="ComplaintType">
+                <ScalarProperty Name="ComplaintTypeId" ColumnName="ComplaintTypeId" />
+                <ScalarProperty Name="ComplaintType1" ColumnName="ComplaintType" />
+                <ScalarProperty Name="ComplaintCost" ColumnName="ComplaintCost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
+                <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
+                <ScalarProperty Name="CustomerCity" ColumnName="CustomerCity" />
+                <ScalarProperty Name="CustomerQuery" ColumnName="CustomerQuery" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="CustomerStetus" ColumnName="CustomerStetus" />
+                <ScalarProperty Name="CustomerContact" ColumnName="CustomerContact" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerComplaints">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.CustomerComplaint">
+              <MappingFragment StoreEntitySet="CustomerComplaint">
+                <ScalarProperty Name="ComplaintId" ColumnName="ComplaintId" />
+                <ScalarProperty Name="ComplaintDescription" ColumnName="ComplaintDescription" />
+                <ScalarProperty Name="ComplaintDate" ColumnName="ComplaintDate" />
+                <ScalarProperty Name="ComplaintResolvedDate" ColumnName="ComplaintResolvedDate" />
+                <ScalarProperty Name="ComplaintType" ColumnName="ComplaintType" />
+                <ScalarProperty Name="ComplintStatus" ColumnName="ComplintStatus" />
+                <ScalarProperty Name="ResolvedBy" ColumnName="ResolvedBy" />
+                <ScalarProperty Name="ResolveInformation" ColumnName="ResolveInformation" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerPaymentHistories">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.CustomerPaymentHistory">
+              <MappingFragment StoreEntitySet="CustomerPaymentHistory">
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="PaymentStatusId" ColumnName="PaymentStatusId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="AccountStatusId" ColumnName="AccountStatusId" />
+                <ScalarProperty Name="PaymentDuedate" ColumnName="PaymentDuedate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerRoles">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.CustomerRole">
+              <MappingFragment StoreEntitySet="CustomerRole">
+                <ScalarProperty Name="CustomerRoleId" ColumnName="CustomerRoleId" />
+                <ScalarProperty Name="CustomerRoleName" ColumnName="CustomerRoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerStatusInfoes">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.CustomerStatusInfo">
+              <MappingFragment StoreEntitySet="CustomerStatusInfo">
+                <ScalarProperty Name="CustomerStatusId" ColumnName="CustomerStatusId" />
+                <ScalarProperty Name="ActiveDate" ColumnName="ActiveDate" />
+                <ScalarProperty Name="DeactiveDate" ColumnName="DeactiveDate" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="months">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.month">
+              <MappingFragment StoreEntitySet="month">
+                <ScalarProperty Name="monthId" ColumnName="monthId" />
+                <ScalarProperty Name="monthDate" ColumnName="monthDate" />
+                <ScalarProperty Name="monthName" ColumnName="monthName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packages">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.Package">
+              <MappingFragment StoreEntitySet="Package">
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="PackageName" ColumnName="PackageName" />
+                <ScalarProperty Name="PackagePrice" ColumnName="PackagePrice" />
+                <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Package_Log_Table">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.Package_Log_Table">
+              <MappingFragment StoreEntitySet="Package_Log_Table">
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="PackageName" ColumnName="PackageName" />
+                <ScalarProperty Name="PackagePrice" ColumnName="PackagePrice" />
+                <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="paymentStetus">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.paymentStetu">
+              <MappingFragment StoreEntitySet="paymentStetus">
+                <ScalarProperty Name="PaymentStatusId" ColumnName="PaymentStatusId" />
+                <ScalarProperty Name="PaymentStetus" ColumnName="PaymentStetus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonGenders">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.PersonGender">
+              <MappingFragment StoreEntitySet="PersonGender">
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="GenderInfo" ColumnName="GenderInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonInformations">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.PersonInformation">
+              <MappingFragment StoreEntitySet="PersonInformation">
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QueryStatus">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.QueryStatu">
+              <MappingFragment StoreEntitySet="QueryStatus">
+                <ScalarProperty Name="QueryStatusId" ColumnName="QueryStatusId" />
+                <ScalarProperty Name="QuerySatus" ColumnName="QuerySatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="StatusDetails" ColumnName="StatusDetails" />
+                <ScalarProperty Name="StatusBit" ColumnName="StatusBit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddressInformations">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.AddressInformation">
+              <MappingFragment StoreEntitySet="AddressInformation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewPackagePrices">
+            <EntityTypeMapping TypeName="CableSystemManagementModel.NewPackagePrice">
+              <MappingFragment StoreEntitySet="NewPackagePrice">
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="NewPackagePrice1" ColumnName="NewPackagePrice" />
+                <ScalarProperty Name="MonthId" ColumnName="MonthId" />
+                <ScalarProperty Name="OLDPACKAGEID" ColumnName="OLDPACKAGEID" />
+                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetNewPackageCost" FunctionName="CableSystemManagementModel.Store.GetNewPackageCost">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CableSystemManagementModel.GetNewPackageCost_Result">
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="NewPackagePrice" ColumnName="NewPackagePrice" />
+                <ScalarProperty Name="MonthId" ColumnName="MonthId" />
+                <ScalarProperty Name="OLDPACKAGEID" ColumnName="OLDPACKAGEID" />
+                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetNewPrice" FunctionName="CableSystemManagementModel.Store.GetNewPrice" />
+          <FunctionImportMapping FunctionImportName="GetPackageCost" FunctionName="CableSystemManagementModel.Store.GetPackageCost">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CableSystemManagementModel.GetPackageCost_Result">
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="NewPackagePrice" ColumnName="NewPackagePrice" />
+                <ScalarProperty Name="MonthId" ColumnName="MonthId" />
+                <ScalarProperty Name="OLDPACKAGEID" ColumnName="OLDPACKAGEID" />
+                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="CableSystemManagementModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="CableSystemManagementModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="CableSystemManagementModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="CableSystemManagementModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CableSystemManagementModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="CableSystemManagementModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CableSystemManagementModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="CableSystemManagementModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="CableSystemManagementModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="StoredProcedure" FunctionName="CableSystemManagementModel.Store.StoredProcedure" />
+          <FunctionImportMapping FunctionImportName="usp_CityInformation" FunctionName="CableSystemManagementModel.Store.usp_CityInformation" />
+          <FunctionImportMapping FunctionImportName="usp_GetCustomerDetails" FunctionName="CableSystemManagementModel.Store.usp_GetCustomerDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CableSystemManagementModel.usp_GetCustomerDetails_Result">
+                <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
+                <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_transaction" FunctionName="CableSystemManagementModel.Store.usp_transaction" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
